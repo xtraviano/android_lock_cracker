@@ -1,4 +1,4 @@
-## Android Pattern Lock Cracker
+# Android Pattern Lock Cracker
 This is a little tool to crack the pattern lock on Android devices.
 
 
@@ -96,3 +96,24 @@ The information above has been taken from http://forensics.spreitzenbarth.de/201
 ## There is nothing new
 
 Of course this is not the first tool to crack the pattern lock, many Mobile Forensic Frameworks such as ADE deal with this task and much more, but this tool is mine ;-)
+
+
+# Android Pin/Password Lock Cracker
+
+This is a little tool to crack the password lock on Android devices.
+
+## How does the pin/password lock works?
+
+The pin lock contains 4 digits (0-9) and the password is a sequence of digits (0-9) and/or alphabet (a-z, A-Z) with length of 4 or more. Android adds a salt to the end of pin/password, saves the sha1 and md5 hashes of salted pin/passwd to file. This tool is used to crack the hashes.
+
+## Where can I find the salt and hashes?
+
+The salt is stored at "/data/system/locksettings.db" which is a sqlite file and you can open it with sqlite3 cmdline tool. The hashes are stored at "/data/system/password.key".
+
+## How does this tool works?
+
+This tool first try to crack the lock as a pin and then as a password.
+
+## Limitations
+
+The length of password cannot be greater than 4.
