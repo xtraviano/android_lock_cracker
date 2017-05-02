@@ -84,7 +84,7 @@ def show_pattern(pattern):
     Shows the pattern "graphically"
     """
 
-    gesture = [None, None, None, None, None, None, None, None, None]
+    gesture = [None for x in range(MAX_LEN)]
 
     cont = 1
     for i in pattern:
@@ -92,15 +92,23 @@ def show_pattern(pattern):
         cont += 1
 
     print "[+] Gesture:\n"
+    result = list()
+    for i in range(0, MATRIX_SIZE[0]):
+        val = [None for x in range(MATRIX_SIZE[0])]
+        for j in range(0, MATRIX_SIZE[1]):
+            val[j] = " " if gesture[i * MATRIX_SIZE[0] + j] is None else str(gesture[i * MATRIX_SIZE[0] + j])
+        result += val
 
-    for i in range(0, 3):
-        val = [None, None, None]
-        for j in range(0, 3):
-            val[j] = " " if gesture[i * 3 + j] is None else str(gesture[i * 3 + j])
+    for j in range(0, MATRIX_SIZE[1]):
+        dash = ''
+        number = ''
+        for i in range(0, MATRIX_SIZE[0]):
+            dash += ' ----- '
+            number += ' | %s | ' % (result[i + MATRIX_SIZE[1]*j])
+        print dash
+        print number
+        print dash
 
-        print '  -----  -----  -----'
-        print '  | %s |  | %s |  | %s |  ' % (val[0], val[1], val[2])
-        print '  -----  -----  -----'
 
 def crack(target_hash):
     ncores = multiprocessing.cpu_count()
