@@ -1,10 +1,10 @@
 # Android Pattern Lock Cracker
 This is a little tool to crack the pattern lock on Android devices.
-
+This tool works **up to Android 5.1.1 (included)**. Android 6.0 introduces Gatekeeper and changes the way it store the password/pattern/pin.
 
 ## How does the pattern lock works?
 
-Really, the pattern lock is the SHA1 hash sequence of digits (0-8) with length from 3 (4 since Android 2.3.3) to 8.
+Really, the pattern lock is the SHA1 hash sequence of digits (0-8) with length from 3 (4 since Android 2.3.3) to 9.
 
 Since Android does not allows the pattern to repeat "balls" and it does not use a salt when computing the SHA1 hash, it really takes a very short period of time to crack the hash and get the pattern.
 
